@@ -6,11 +6,10 @@ import org.cwsya.tlbook.domain.DO.AdminDO;
 import org.cwsya.tlbook.domain.Result;
 import org.cwsya.tlbook.domain.config.ResultCodeEnum;
 import org.cwsya.tlbook.exception.userErrorException;
-import org.cwsya.tlbook.service.admin.impl.UserServiceImpl;
+import org.cwsya.tlbook.service.admin.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +21,7 @@ import java.util.Map;
 public class UserController {
 
     @Autowired
-    private UserServiceImpl userService;
+    private UserService userService;
 
     @PostMapping("/login")
     public Result<?> login(String userName,String passWord) throws userErrorException {
@@ -43,5 +42,10 @@ public class UserController {
             resultMap.put(token.getTokenName(), token.getTokenValue());
         }
         return new Result<Map<String, String>>(ResultCodeEnum.SUCCESS.getResultCode(), ResultCodeEnum.SUCCESS.getMessage(), resultMap);
+    }
+
+    @PostMapping("/isLogin")
+    public Result<?> isLogin(){
+        return new Result<>(ResultCodeEnum.SUCCESS.getResultCode(),ResultCodeEnum.SUCCESS.getMessage(),userService.isLogin());
     }
 }

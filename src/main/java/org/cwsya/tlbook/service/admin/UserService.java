@@ -12,4 +12,10 @@ public interface UserService {
      * @return 查出的用户数据
      */
     AdminDO selectAdmin(AdminDO adminDO);
+
+    /**
+     * 判断是否登录
+     * @return 登录状态
+     */
+    boolean isLogin();
 }
