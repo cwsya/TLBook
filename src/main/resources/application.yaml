@@ -1,17 +1,32 @@
+#项目信息
 spring:
   application:
     name: TLBook
 
+  #数据库信息
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/TLBook?serverTimezone=UTC
     password: root
     username: root
+server:
+  port: 80
+#MyBatis配置信息
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
   global-config:
     db-config:
       logic-delete-value: 1
       logic-not-delete-value: 0
+
+#Sa-Token配置信息
+sa-token:
+  token-name: cwsya
+  timeout: -1
+  activity-timeout: 600
+  is-concurrent: false
+  is-share: false
+  token-style: uuid
+  is-log: true
+
