@@ -1,11 +1,22 @@
 package org.cwsya.tlbook.domain.config;
 
+/**
+ * @author cws
+ */
+
 public enum ResultCodeEnum {
     /**
      * 成功
      */
     SUCCESS(100,"成功"),
-    USER_ERROR(101,"账号或密码错误");
+    /**
+     * 账号或密码错误
+     */
+    USER_ERROR(101,"账号或密码错误"),
+    /**
+     * 请求类型错误
+     */
+    HTTP_REQUEST_METHOD_NOT_SUPPORTED_EXCEPTION(102,"不要乱动我的接口");
     private int resultCode;
     private String message;
 
