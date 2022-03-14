@@ -41,11 +41,21 @@ public class UserController {
             resultMap = new HashMap<>(2);
             resultMap.put(token.getTokenName(), token.getTokenValue());
         }
-        return new Result<Map<String, String>>(ResultCodeEnum.SUCCESS.getResultCode(), ResultCodeEnum.SUCCESS.getMessage(), resultMap);
+        ResultCodeEnum codeEnum = ResultCodeEnum.SUCCESS;
+        return new Result<Map<String, String>>(codeEnum.getResultCode(), codeEnum.getMessage(), resultMap);
     }
 
     @PostMapping("/isLogin")
     public Result<?> isLogin(){
-        return new Result<>(ResultCodeEnum.SUCCESS.getResultCode(),ResultCodeEnum.SUCCESS.getMessage(),userService.isLogin());
+        ResultCodeEnum codeEnum = ResultCodeEnum.SUCCESS;
+        return new Result<>(codeEnum.getResultCode(), codeEnum.getMessage(),userService.isLogin());
     }
+
+    @PostMapping("/outLogin")
+    public Result<?> outLogin(@RequestHeader("${sa-token.token-name}") String token){
+        StpUtil.logoutByTokenValue(token);
+        ResultCodeEnum codeEnum = ResultCodeEnum.SUCCESS;
+        return new Result<>(codeEnum.getResultCode(), codeEnum.getMessage(),true);
+    }
+
 }
