@@ -5,7 +5,7 @@ import cn.dev33.satoken.stp.StpUtil;
 import org.cwsya.tlbook.domain.DO.AdminDO;
 import org.cwsya.tlbook.domain.Result;
 import org.cwsya.tlbook.domain.config.ResultCodeEnum;
-import org.cwsya.tlbook.exception.userErrorException;
+import org.cwsya.tlbook.exception.UserErrorException;
 import org.cwsya.tlbook.service.admin.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -24,17 +24,17 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/login")
-    public Result<?> login(String userName,String passWord) throws userErrorException {
+    public Result<?> login(String userName,String passWord) throws UserErrorException {
         AdminDO adminDO = new AdminDO(null,userName,passWord,null);
         System.out.println(adminDO);
         if (StringUtils.isEmpty(adminDO.getUserName()) || StringUtils.isEmpty(adminDO.getPassWord())) {
-            throw new userErrorException("用户名密码错误");
+            throw new UserErrorException("用户名密码错误");
         }
         SaTokenInfo token;
         AdminDO readminDO = userService.selectAdmin(adminDO);
         HashMap<String, String> resultMap;
         if (readminDO == null) {
-            throw new userErrorException("用户名密码错误");
+            throw new UserErrorException("用户名密码错误");
         } else {
             StpUtil.login(readminDO.getId());
             token = StpUtil.getTokenInfo();
