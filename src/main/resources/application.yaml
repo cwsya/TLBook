@@ -30,3 +30,17 @@ sa-token:
   token-style: uuid
   is-log: true
 
+#腾讯cos整合测试
+COS:
+  #key
+  secretId: AKIDmPoytZdDASUHvLcR7XnpdCVZNvIcqV4N
+  secretKey: DBuNhneFbhgQuFLBl6C8oGbgojX5NPBi
+  appId: 1256545590
+  #存储桶
+  bucketName: cwsya-1256545590
+  #区域设置
+  region: ap-hongkong
+  #域名
+  url: https://cwsya-1256545590.cos.ap-hongkong.myqcloud.com
+  #默认文件夹
+  prefix: cws/
