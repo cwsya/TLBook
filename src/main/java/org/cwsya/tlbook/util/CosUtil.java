@@ -1,7 +1,9 @@
 package org.cwsya.tlbook.util;
 
 import java.io.File;
+import java.io.InputStream;
 
+import com.qcloud.cos.model.ObjectMetadata;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import com.qcloud.cos.COSClient;
@@ -10,6 +12,9 @@ import com.qcloud.cos.auth.BasicCOSCredentials;
 import com.qcloud.cos.auth.COSCredentials;
 import com.qcloud.cos.region.Region;
 
+/**
+ * @author cws
+ */
 @Component
 public class CosUtil {
 
@@ -40,6 +45,14 @@ public class CosUtil {
     COSClient cosClient = init();
     try {
       cosClient.putObject(bucketName,prefix + pathAndName, file);
+    } finally {
+      cosClient.shutdown();
+    }
+  }
+  public void upload(String pathAndName, InputStream file) {
+    COSClient cosClient = init();
+    try {
+      cosClient.putObject(bucketName,prefix + pathAndName, file,new ObjectMetadata());
     } finally {
       cosClient.shutdown();
     }

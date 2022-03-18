@@ -17,7 +17,8 @@ public enum ResultCodeEnum {
      * 请求类型错误
      */
     HTTP_REQUEST_METHOD_NOT_SUPPORTED_EXCEPTION(102,"不要乱动我的接口"),
-    NOT_LOG_IN_EXCEPTION(103,"请先登录");
+    NOT_LOG_IN_EXCEPTION(103,"请先登录"),
+    REQUEST_EXCEPTION(104,"参数异常");
     private int resultCode;
     private String message;
 
