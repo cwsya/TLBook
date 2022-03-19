@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.cwsya.tlbook.mapper.BookAndClassMapper">
+    <select id="quBook" resultType="org.cwsya.tlbook.domain.DO.BookAndClassDO">
+        SELECT b.*,c.class_name FROM book b left join book_class c on b.book_class=c.class_id ${ew.customSqlSegment}
+    </select>
+</mapper>
