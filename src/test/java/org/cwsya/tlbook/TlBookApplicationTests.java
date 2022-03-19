@@ -53,9 +53,18 @@ class TlBookApplicationTests {
         page.setSize(2);
         page.setCurrent(1);
         LambdaQueryWrapper<BookAndClassDO> bookAndClassDOLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        bookAndClassDOLambdaQueryWrapper.like(BookAndClassDO::getBookName,"123");
+        bookAndClassDOLambdaQueryWrapper.like(BookAndClassDO::getBookName,"2");
         IPage<BookAndClassDO> bookAndClassDOIPage = bookAndClassMapper.quBook(page,bookAndClassDOLambdaQueryWrapper);
         System.out.println(page.getRecords());
+    }
+
+    @Autowired
+    private BookMapper bookMapper123;
+
+
+    @Test
+    void dasdasfdsafwsdafdsafawe(){
+        System.out.println(bookMapper123.selectList(null));
     }
 
 }

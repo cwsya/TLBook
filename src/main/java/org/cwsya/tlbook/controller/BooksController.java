@@ -34,6 +34,7 @@ public class BooksController {
         page1.setSize(number);
         page1.setCurrent(page);
         LambdaQueryWrapper<BookAndClassDO> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(BookAndClassDO::getIsDeleted,0);
         if (StringUtils.isEmpty(bookName)){
             bookAndClassMapper.quBook(page1,wrapper );
         }else {

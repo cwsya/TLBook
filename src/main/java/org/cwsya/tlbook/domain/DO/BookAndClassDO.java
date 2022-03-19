@@ -3,9 +3,11 @@ package org.cwsya.tlbook.domain.DO;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.util.Date;
 
+@TableName("book")
 public class BookAndClassDO {
     private String bookId;
     private String bookName;
